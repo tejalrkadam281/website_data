@@ -24,6 +24,35 @@
     <!-- Custom styles for this template -->
     <link href="css/resume.min.css" rel="stylesheet">
 
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      
+      $("#contactme").submit(function(e) {
+        e.preventDefault();
+        
+        $form = $(this);
+        
+        $.ajax({
+          type: "POST",
+          url:  "https://y1hk47xg72.execute-api.us-east-2.amazonaws.com/Testing/contactme",
+          data: $form.serialize(),
+          success: function(data) {
+             alert(data);
+            
+            
+          },
+          dataType: 'json'
+        });
+      });
+    });
+  </script>
+
+
+
+
   </head>
 
   <body id="page-top">
@@ -320,12 +349,13 @@
             <div>
               <div>
                 <p>Please compose your message below: </p>
-                  <form role="form" method="post" id="feedback_form">
+                <!--action="https://y1hk47xg72.execute-api.us-east-2.amazonaws.com/Testing/contactme"-->
+                  <form role="form" method="post" id="contactme" > 
                     
                     
                     <div>
                       <div>
-                        <label for="message">Message:</label>
+                        <label for="messages">Message:</label>
                         <textarea class="form-control" type="textarea" name="messages" id="messages" placeholder="Your Message" maxlength="6000" rows="7"></textarea>
                       </div>
                     </div> <!-- Comments row -->
